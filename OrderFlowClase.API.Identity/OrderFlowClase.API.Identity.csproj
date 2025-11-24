@@ -32,4 +32,8 @@
 	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OrderFlowClase.ServiceDefaults\OrderFlowClase.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

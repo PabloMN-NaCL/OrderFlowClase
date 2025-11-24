@@ -11,10 +11,13 @@ namespace OrderFlowClase.API.Identity.Controllers
     {
         private IEnumerable<User> _users = new List<User>();
         private IAuthService _authService;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
+            _logger = logger;
+
         }
 
 
@@ -22,6 +25,8 @@ namespace OrderFlowClase.API.Identity.Controllers
         public async Task<IActionResult> Register([FromBody] User user)
         {
            var result = await _authService.Register(user.Email, user.Password);
+
+            _logger.LogInformation("User registered: {env}", Environment.GetEnvironmentVariable("Version"));
 
             return Ok("User registered successfully.");
         }

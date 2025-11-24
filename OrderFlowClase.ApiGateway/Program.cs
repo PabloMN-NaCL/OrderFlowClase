@@ -6,6 +6,10 @@ builder.Services.AddControllers();
 
 builder.Services.AddYarpReverseProxy(builder.Configuration);
 
+builder.Services.AddGatewayCors();
+
+builder.AddServiceDefaults();
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();

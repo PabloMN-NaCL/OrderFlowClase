@@ -15,6 +15,8 @@ builder.Configuration.AddUserSecrets(typeof(Program).Assembly, true);
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 
+builder.AddServiceDefaults();
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
