@@ -24,7 +24,16 @@ namespace OrderFlowClase.API.Identity.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] User user)
         {
-           var result = await _authService.Register(user.Email, user.Password);
+            var result = await _authService.Register(user.Email, user.Password);
+
+            if (!result.Succeeded)
+            {
+                return Problem(
+                    title: "Registration failed",
+                    detail: string.Join(", ", result.Errors),
+                    statusCode: StatusCodes.Status400BadRequest
+                );
+            }
 
             return Ok("User registered successfully.");
         }
